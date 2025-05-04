@@ -47,8 +47,8 @@ public class NightActions {
                 witchAction(players[0], 2);
                 break;
 
-            case Escort:
-                // Action for Escort
+            case Escort, Consort:
+                roleBlockAction(players[0]);
                 break;
 
             case Trickster:
@@ -61,6 +61,7 @@ public class NightActions {
 
             case Vigilante:
                 // Action for Vigilante
+                //kill at night
                 break;
 
             case Veteran:
@@ -84,11 +85,11 @@ public class NightActions {
                 break;
 
             case Werewolf:
-                // Action for Werewolf
+                werewolfAction(players[0]);
                 break;
 
             case Sorceror:
-                // Action for Sorceror
+                sorcerorAction(players[0]);
                 break;
 
             case Cubwolf:
@@ -96,15 +97,11 @@ public class NightActions {
                 break;
 
             case Hexwolf:
-                // Action for Hexwolf
+                hexAction(players[0]);
                 break;
 
             case Mistwolf:
                 // Action for Mistwolf
-                break;
-
-            case Consort:
-                // Action for Consort
                 break;
 
             case Doppelganger:
@@ -169,5 +166,21 @@ public class NightActions {
         else{
             targetPlayer.kill(); //KILLL!!!!!!!
         }
+    }
+
+    private void roleBlockAction(Player targetPlayer){
+        targetPlayer.setRoleBlocked(true);
+    }
+
+    private void werewolfAction(Player targetPlayer){
+        targetPlayer.attack();
+    }
+
+    private void sorcerorAction(Player targetPlayer){
+        targetPlayer.setSilenced(true);
+    }
+
+    private void hexAction(Player targetPlayer){
+        targetPlayer.setHexed(true);
     }
 }
